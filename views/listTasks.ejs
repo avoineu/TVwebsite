@@ -1,0 +1,34 @@
+<link rel="stylesheet" href="/css/style.css">
+<h1>TV</h1>
+
+<h2>TV Désirée</h2>
+<ul>
+  <% for(tv of wishlist) { %>
+    <li><%= tv.Marque %> <%= tv.Prix %>€ <%= tv.Taille %>m <a href="/bought/<%= tv.idtv %>">Acheter</a> <a href="/delete/<%= tv.idtv %>">Enlever</a></li>
+  <% } %>
+</ul>
+
+<h2>TV Achetée fonctionelle</h2>
+<ul>
+  <% for(tv of ownedlist) { %>
+    <li><%= tv.Marque %> <%= tv.Prix %>€ <%= tv.Taille %>m <a href="/break/<%= tv.idtv %>">Casser</a> <a href="/delete/<%= tv.idtv %>">Enlever</a></li>
+  <% } %>
+</ul>
+
+<h2>TV Achetée cassée</h2>
+<ul>
+  <% for(tv of brokenlist) { %>
+    <li><%= tv.Marque %> <%= tv.Prix %>€ <%= tv.Taille %>m <br> cause de cassage : <%= tv.Cause %>  <a href="/delete/<%= tv.idtv %>">Enlever</a> </li>
+  <% } %>
+</ul>
+
+<h2>Ajouter une télévision</h2>
+<form action="/add" method="POST">
+  Marque <input name="Marque" div="bouton" /> <br>
+  Prix <input type="number" name="Prix" div="bouton" /> <br>
+  Taille [m]<input type="number" name="Taille" div="bouton" /> <br>
+  <input type="submit" /> <br>
+</form>
+
+<h2>Total argent depensé </h2>
+<%= total %>
